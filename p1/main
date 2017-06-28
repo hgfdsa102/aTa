@@ -1,0 +1,32 @@
+#312312-*- coding: utf-8 -*-
+import os
+import base64
+import json
+import binascii
+#from twofish import Twofish
+
+#T = Twofish('SSR_N0.1!@#$%^&*')
+#x = T.encrypt(b'TEst123123213asd')
+#print(T1.decrypt(x).decode())
+
+"""
+T = Twofish(b'SSR_N0.1!@#$%^&*') 
+cipher_text = T.encrypt(b'test')
+plain_text = T.decrypt(cipher_text)
+print (plain_text)
+"""
+
+result = open('/home/develop/Desktop/test/testresult.txt', 'r').read().decode('utf8')
+result = result.replace("\r\n", "")
+test_text = base64.decodestring(result)  # T5g+rMzGBrQ/hwnMyQedNw== > test
+print(test_text)
+d = json.loads(test_text)
+
+dirName = 'testDir'
+dirpath = os.getcwd()
+
+if not os.path.isdir(os.path.join(os.getcwd(), dirName)):
+    os.mkdir(os.path.join(os.getcwd(), dirName))
+    print("%s mkdir" % dirName)
+else:
+    print("%s is already exist" % dirName)
